@@ -110,9 +110,7 @@ python-dotenv>=0.19.0
 
 ### Claude Communication Protocol
 - Prompt Format: "Calculate the following mathematical expression and return only the numerical result: {expression}"
-- Model Selection: Use `claude-3-haiku-20240307` for fast, cost-effective calculations
 - Response Parsing: Extract numerical result using regex pattern `r'[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?'`
-- Error Recovery: Fallback to basic Python `eval()` for simple expressions if API fails
 
 ### API Configuration Requirements
 ```env (already generated, just giving you the template)
@@ -166,3 +164,4 @@ You have complete creative control over:
 - Error Messages: Clear, actionable user feedback
 - Edge Cases: Handles division by zero, overflow, malformed expressions
 - Professional Appearance: Polished, modern GUI design
+- Standardized Appearance: All buttons are of the same size. All text is centered within their button.
