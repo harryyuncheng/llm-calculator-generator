@@ -31,8 +31,7 @@ Build a modern GUI calculator application that uses Claude AI to perform mathema
 calculator-app/
 ├── calculator.py          # Main application class
 ├── run.py                # Setup and launcher script
-├── requirements.txt      # Dependencies
-└── README.md           # Setup instructions
+└── requirements.txt      # Dependencies
 ```
 DO NOT create any other files. Assume that there is a venv, .env, and .gitignore already generated.
 
