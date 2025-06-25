@@ -34,6 +34,7 @@ calculator-app/
 ├── requirements.txt      # Dependencies
 └── README.md           # Setup instructions
 ```
+DO NOT create any other files. Assume that there is a venv, .env, and .gitignore already generated.
 
 ### 1. Main Application (`calculator.py`)
 
@@ -58,6 +59,7 @@ class LLMCalculator:
         
     async def calculate_with_claude(self, expression: str) -> str:
         # Send expression to Claude API
+        # Log the expression being sent to the LLM
         # Parse and return numerical result
         
     def update_display(self, text: str):
@@ -72,6 +74,11 @@ Required Features:
 - Loading States: Visual feedback during API calls (disabled buttons, loading indicator)
 - Keyboard Support: Allow typing expressions directly
 - State Management: Track current expression, last result, calculation state
+
+#### Visual & Logging Requirements
+- **All text in the application must be black and properly centered.**
+- **All calculator buttons must be grey.**
+- **There must be logs whenever the LLM is called to calculate an expression.**
 
 ### 2. Launcher Script (`run.py`)
 
@@ -140,7 +147,7 @@ MAX_TOKENS=100
 You have complete creative control over:
 
 ### Visual Design
-- Color Schemes: Choose modern, professional, or themed palettes
+- Color Schemes: All text must be black. All buttons must be grey.
 - Typography: Select appropriate fonts for display and buttons
 - Layout Style: Grid arrangement, button sizes, spacing, borders
 - Visual Effects: Subtle animations, hover effects, button press feedback

@@ -3,3 +3,4 @@ venv/
 calculator.py
 run.py
 claude_outputs/
+__pycache__/

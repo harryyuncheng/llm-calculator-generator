@@ -4,6 +4,7 @@ import subprocess
 from pathlib import Path
 from dotenv import load_dotenv
 import anthropic
+import time
 
 def load_api_key():
     load_dotenv()
@@ -29,7 +30,7 @@ def call_claude(api_key, prompt):
     user_prompt = f"{prompt}\n\n# Please generate all required code files as described above."
     response = client.messages.create(
         model="claude-sonnet-4-20250514",
-        max_tokens=4096,
+        max_tokens=8192,
         temperature=0,
         system=system_prompt,
         messages=[{"role": "user", "content": user_prompt}]
@@ -72,9 +73,18 @@ def update_requirements_from_claude(claude_output, req_file):
 
 def parse_and_write_files(claude_output, base_dir):
     import re
-    code_blocks = re.findall(
-        r"```\w*\n// filepath: (.+?)\n(.*?)```", claude_output, re.DOTALL
+
+    # Match both // filepath: ... and # filename.py as the first line of the code block
+    code_blocks = []
+    # 1. Match // filepath: ... (original)
+    code_blocks += re.findall(
+        r"```[\w-]*\n// filepath: (.+?)\n(.*?)```", claude_output, re.DOTALL
     )
+    # 2. Match # filename.py or # filename.txt or # filename.md as first line
+    code_blocks += re.findall(
+        r"```[\w-]*\n# ([^\n]+)\n(.*?)```", claude_output, re.DOTALL
+    )
+
     if not code_blocks:
         print("No code blocks found in Claude's output.")
         sys.exit(1)
@@ -110,10 +120,11 @@ def main():
     prompt = read_prompt()
     print("Calling Claude Sonnet to generate project code...")
     claude_output = call_claude(api_key, prompt)
-    # Save Claude's raw output for debugging
+    # Save Claude's raw output for debugging with a timestamped filename
     debug_dir = Path(__file__).parent / "claude_outputs"
     debug_dir.mkdir(exist_ok=True)
-    debug_file = debug_dir / "claude_raw_output.txt"
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    debug_file = debug_dir / f"claude_raw_output_{timestamp}.txt"
     with open(debug_file, "w", encoding="utf-8") as f:
         f.write(claude_output)
     print(f"Saved Claude output to {debug_file}")
