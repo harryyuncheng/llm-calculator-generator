@@ -2,3 +2,4 @@
 venv/
 calculator.py
 run.py
+claude_outputs/

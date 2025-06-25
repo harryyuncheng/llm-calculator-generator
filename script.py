@@ -110,6 +110,13 @@ def main():
     prompt = read_prompt()
     print("Calling Claude Sonnet to generate project code...")
     claude_output = call_claude(api_key, prompt)
+    # Save Claude's raw output for debugging
+    debug_dir = Path(__file__).parent / "claude_outputs"
+    debug_dir.mkdir(exist_ok=True)
+    debug_file = debug_dir / "claude_raw_output.txt"
+    with open(debug_file, "w", encoding="utf-8") as f:
+        f.write(claude_output)
+    print(f"Saved Claude output to {debug_file}")
     base_dir = Path(__file__).parent
     parse_and_write_files(claude_output, base_dir)
     install_dependencies()
