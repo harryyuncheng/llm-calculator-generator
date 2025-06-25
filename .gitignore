@@ -1,0 +1,4 @@
+.env
+venv/
+calculator.py
+run.py
