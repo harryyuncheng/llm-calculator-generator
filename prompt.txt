@@ -164,4 +164,4 @@ You have complete creative control over:
 - Error Messages: Clear, actionable user feedback
 - Edge Cases: Handles division by zero, overflow, malformed expressions
 - Professional Appearance: Polished, modern GUI design
-- Standardized Appearance: All buttons are of the same size. All text is centered within their button.
+- Standardized Appearance: All buttons are of the same size. All text is centered within their button. ENSURE that the columnspan for '0' is 1.
