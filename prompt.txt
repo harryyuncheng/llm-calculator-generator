@@ -136,11 +136,6 @@ MAX_TOKENS=100
 - Loading Feedback: Progress indicator and disabled UI during API calls
 - Error Messages: User-friendly error dialogs (not console errors)
 
-### Accessibility Considerations
-- MUST support keyboard navigation between all buttons
-- SHOULD use high-contrast colors for readability
-- SHOULD provide clear focus indicators
-
 ## Creative Freedom Areas
 
 You have complete creative control over:
@@ -150,12 +145,6 @@ You have complete creative control over:
 - Typography: Select appropriate fonts for display and buttons
 - Layout Style: Grid arrangement, button sizes, spacing, borders
 - Visual Effects: Subtle animations, hover effects, button press feedback
-
-### Code Organization
-- Design Patterns: Choose appropriate patterns for state management
-- Error Handling Strategy: Decide between exceptions vs return codes
-- Async Implementation: Choose between asyncio or threading for API calls
-- Configuration Management: Extend beyond basic .env if desired
 
 ## Success Criteria
 
@@ -177,11 +166,3 @@ You have complete creative control over:
 - Error Messages: Clear, actionable user feedback
 - Edge Cases: Handles division by zero, overflow, malformed expressions
 - Professional Appearance: Polished, modern GUI design
-
-## Deliverables
-
-1. Working Application: Complete calculator with all required features
-2. Setup Documentation: Clear installation and configuration instructions
-3. Code Documentation: Inline comments and docstrings for key functions
-4. Configuration Template: `.env.example` file with all required variables
-5. Error Handling: Comprehensive error scenarios covered
